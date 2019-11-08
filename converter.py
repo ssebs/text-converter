@@ -4,6 +4,11 @@
 import sys
 
 
+# Helper functions
+def upper_first_letter(input_str: str) -> str:
+    return input_str[0].upper() + input_str[1:]
+
+
 # Convertion functions
 def to_lower(sentence: str) -> str:
     sentence = sentence.lower()
@@ -17,17 +22,36 @@ def to_upper(sentence: str) -> str:
 
 def to_sentence(sentence: str) -> str:
     sentence = sentence.lower()
-    sentence = (lambda s: s[0].upper() + s[1:])(sentence)
+    sentence = upper_first_letter(sentence)
     sentence = (lambda s: s if s[-1] == '.' else s + '.')(sentence)
     return sentence
 
 
 def to_title(sentence: str) -> str:
-    return sentence
+    articles_list = ["as", "the", "a", "an", "is", "and", "but", "by", "for",
+                     "in", "of", "to", "or", "nor", "on", "at"]
+    new_sentence = ""
+    words = sentence.lower().split(' ')
+
+    for w in words:
+        if w in articles_list:
+            new_sentence += w
+        else:
+            new_sentence += upper_first_letter(w)
+        new_sentence += ' '
+
+    return new_sentence
 
 
 def to_title_all(sentence: str) -> str:
-    return sentence
+    new_sentence = ""
+    words = sentence.lower().split(' ')
+
+    for w in words:
+        new_sentence += upper_first_letter(w)
+        new_sentence += ' '
+
+    return new_sentence
 
 
 def to_studly(sentence: str) -> str:
@@ -46,6 +70,7 @@ def parse_input() -> dict:
     ret = {"sentence": None, "to_type": None}
     ret["to_type"] = input("What kind of conversion do you want? ")
     ret["sentence"] = input("Enter your sentence: ")
+    print('\n')
     return ret
 
 
@@ -103,4 +128,4 @@ if __name__ == "__main__":
         output = "You did not submit a proper conversion type."
         print_help()
 
-    print(f"\n{output}")
+    print(f"{output}")
