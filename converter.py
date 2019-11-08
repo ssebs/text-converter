@@ -55,7 +55,19 @@ def to_title_all(sentence: str) -> str:
 
 
 def to_studly(sentence: str) -> str:
-    return sentence
+    new_sentence = ""
+
+    for i, letter in enumerate(sentence.lower()):
+        if letter == ' ':
+            new_sentence += ' '
+            continue
+
+        if i % 2 == 0:
+            new_sentence += letter.upper()
+        else:
+            new_sentence += letter.lower()
+
+    return new_sentence
 
 
 # parse the input strings
@@ -70,7 +82,6 @@ def parse_input() -> dict:
     ret = {"sentence": None, "to_type": None}
     ret["to_type"] = input("What kind of conversion do you want? ")
     ret["sentence"] = input("Enter your sentence: ")
-    print('\n')
     return ret
 
 
@@ -88,7 +99,7 @@ Options:
   -sentence             Convert to sentence case.
   -title                Convert to Title Case
   -title-all            Convert To Title Case, Including The Arcicles
-  -studly               CoNvErT tO sTuDlY cAsE
+  -studly, -annoying    CoNvErT tO sTuDlY cAsE
 
   -help                 Print this help message
     """
@@ -112,17 +123,17 @@ if __name__ == "__main__":
     # print(user_input)
 
     # Convert based on to_type
-    if user_input["to_type"] == "-lower":
+    if "lower" in user_input["to_type"]:
         output = to_lower(user_input["sentence"])
-    elif user_input["to_type"] == "-upper":
+    elif "upper" in user_input["to_type"]:
         output = to_upper(user_input["sentence"])
-    elif user_input["to_type"] == "-sentence":
+    elif "sentence" in user_input["to_type"]:
         output = to_sentence(user_input["sentence"])
-    elif user_input["to_type"] == "-title":
+    elif "title" in user_input["to_type"]:
         output = to_title(user_input["sentence"])
-    elif user_input["to_type"] == "-title-all":
+    elif "title-all" in user_input["to_type"]:
         output = to_title_all(user_input["sentence"])
-    elif user_input["to_type"] == "-studly":
+    elif "studly" in user_input["to_type"] or "annoy" in user_input["to_type"]:
         output = to_studly(user_input["sentence"])
     else:
         output = "You did not submit a proper conversion type."

@@ -36,7 +36,7 @@ Options:
   -sentence             Convert to sentence case.
   -title                Convert to Title Case
   -title-all            Convert To Title Case, Including The Arcicles
-  -studly               CoNvErT tO sTuDlY cAsE
+  -studly, -annoying    CoNvErT tO sTuDlY cAsE
 
   -help                 Print this help message
   ```
