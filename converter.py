@@ -80,8 +80,19 @@ def parse_args() -> dict:
 
 def parse_input() -> dict:
     ret = {"sentence": None, "to_type": None}
-    ret["to_type"] = input("What kind of conversion do you want? ")
-    ret["sentence"] = input("Enter your sentence: ")
+    print("What kind of conversion do you want?")
+    print("""Options:
+  -lower                convert to lowercase
+  -upper                CONVERT TO UPPERCASE
+  -sentence             Convert to sentence case.
+  -title                Convert to Title Case
+  -title-all            Convert To Title Case, Including The Arcicles
+  -studly, -annoying    CoNvErT tO sTuDlY cAsE
+    """)
+    ret["to_type"] = input("> ")
+    print("Enter your sentence: ")
+    ret["sentence"] = input("> ")
+    print('\n')
     return ret
 
 
