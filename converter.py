@@ -6,14 +6,19 @@ import sys
 
 # Convertion functions
 def to_lower(sentence: str) -> str:
+    sentence = sentence.lower()
     return sentence
 
 
 def to_upper(sentence: str) -> str:
+    sentence = sentence.upper()
     return sentence
 
 
 def to_sentence(sentence: str) -> str:
+    sentence = sentence.lower()
+    sentence = (lambda s: s[0].upper() + s[1:])(sentence)
+    sentence = (lambda s: s if s[-1] == '.' else s + '.')(sentence)
     return sentence
 
 
@@ -82,17 +87,17 @@ if __name__ == "__main__":
     # print(user_input)
 
     # Convert based on to_type
-    if user_input["to_type"] == "lower":
+    if user_input["to_type"] == "-lower":
         output = to_lower(user_input["sentence"])
-    elif user_input["to_type"] == "upper":
+    elif user_input["to_type"] == "-upper":
         output = to_upper(user_input["sentence"])
-    elif user_input["to_type"] == "sentence":
+    elif user_input["to_type"] == "-sentence":
         output = to_sentence(user_input["sentence"])
-    elif user_input["to_type"] == "title":
+    elif user_input["to_type"] == "-title":
         output = to_title(user_input["sentence"])
-    elif user_input["to_type"] == "title-all":
+    elif user_input["to_type"] == "-title-all":
         output = to_title_all(user_input["sentence"])
-    elif user_input["to_type"] == "studly":
+    elif user_input["to_type"] == "-studly":
         output = to_studly(user_input["sentence"])
     else:
         output = "You did not submit a proper conversion type."
