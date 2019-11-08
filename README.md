@@ -18,19 +18,25 @@ e.g.
 - Studly (AnNoYiNg)
   - `ThIs Is A nOrMaL sEnTeNcE`
 
+## Installation
+- Install python 3.5+
+- Clone this repo & cd into it
+
 ## Usage
-- Install Python 3
-- Using arguments
-  - `python converter.py -<type> "<your sentence here>"`
-- Using stdin input
-  - `python converter.py`
-  - `What kind of conversion do you want? `
-  - `Enter your sentence: "<your sentence here>"`
-- Types
-  - The types for the flags/input are as follows:
-  - `lower`
-  - `upper`
-  - `sentence`
-  - `title`
-  - `title-all`
-  - `studly`
+```
+Usage: python converter.py [<OPTION>] ["<your sentence here>"]
+
+Convert strings. If you provide any CLI arguments, you must provide an option
+ along with the sentence in double quotes. If you do not provide arguments,
+ you'll be asked for the arguments.
+
+Options:
+  -lower                convert to lowercase
+  -upper                CONVERT TO UPPERCASE
+  -sentence             Convert to sentence case.
+  -title                Convert to Title Case
+  -title-all            Convert To Title Case, Including The Arcicles
+  -studly               CoNvErT tO sTuDlY cAsE
+
+  -help                 Print this help message
+  ```
