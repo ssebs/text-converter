@@ -25,7 +25,7 @@ e.g.
 - Using stdin input
   - `python converter.py`
   - `What kind of conversion do you want? `
-  - `Input your sentence:  "<your sentence here>"`
+  - `Enter your sentence: "<your sentence here>"`
 - Types
   - The types for the flags/input are as follows:
   - `lower`
